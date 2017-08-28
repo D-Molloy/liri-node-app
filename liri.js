@@ -61,8 +61,8 @@ function myTweets() {
                 for (var i = 0; i < tweets.length; i++) {
                 	//format the appropriate responses and print to screen
                     console.log("~~~~~~~~~~~~~~~~~~~~~~~~");
-                    console.log("Date: " + tweets[i].created_at);
                     console.log("Tweet:" + tweets[i].text);
+                    console.log("Date: " + tweets[i].created_at);
                 }
             } else {
                 console.log("There was an error: " + response.body);
