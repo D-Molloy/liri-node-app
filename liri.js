@@ -102,11 +102,10 @@ function movieThis(movieQuery) {
     var request = require("request");
     var queryUrl = "http://www.omdbapi.com/?t=" + movieQuery + "&y=&plot=short&apikey=40e9cece";
     request(queryUrl, function(error, response, body) {
-        // If the request is successful
-
+        // handle obscure movies with no Rotten Tomato Ratings
         if (!JSON.parse(body).Ratings[0] || !JSON.parse(body).Ratings[1]){
         	console.log("~~~~~~~~~~LIRI Results~~~~~~~~~~");
-        	console.log ("That movie couldn't be found.  Please try a different movie or an alternative spelling.");
+        	console.log ("That movie couldn't be found.  Please try an alternative spelling or a different movie.");
         	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         } else if (!error && response.statusCode === 200) {
             //format and print the relevant info to the screen
