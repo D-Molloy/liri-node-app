@@ -29,15 +29,12 @@ switch (argOne) {
     case "my-tweets":
         myTweets();
         break;
-
     case "spotify-this-song":
         spotifyThisSong(songQuery);
         break;
-
     case "movie-this":
         movieThis(movieQuery);
         break;
-
     case "do-what-it-says":
         doWhatItSays();
         break;
@@ -106,7 +103,12 @@ function movieThis(movieQuery) {
     var queryUrl = "http://www.omdbapi.com/?t=" + movieQuery + "&y=&plot=short&apikey=40e9cece";
     request(queryUrl, function(error, response, body) {
         // If the request is successful
-        if (!error && response.statusCode === 200) {
+
+        if (!JSON.parse(body).Ratings[0] || !JSON.parse(body).Ratings[1]){
+        	console.log("~~~~~~~~~~LIRI Results~~~~~~~~~~");
+        	console.log ("That movie couldn't be found.  Please try a different movie or an alternative spelling.");
+        	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        } else if (!error && response.statusCode === 200) {
             //format and print the relevant info to the screen
             var movie = JSON.parse(body);
             console.log("~~~~~~~~~~LIRI Results~~~~~~~~~~");
